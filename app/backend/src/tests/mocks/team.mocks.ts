@@ -11,15 +11,14 @@ const mockAllTeams = [
     "id": 3,
     "teamName": "Botafogo"
   },
-];
+]
 
 const mockIdTeam = {
   "id": 5,
   "teamName": "Cruzeiro"
 }
 
-
 export {
-  mockAllTeams, 
+  mockAllTeams,
   mockIdTeam
-};
+}
