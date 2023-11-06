@@ -1,5 +1,5 @@
 import { Model, QueryInterface, DataTypes } from 'sequelize';
-import ITeams from '../../Interfaces/Teams/ITeams';
+import ITeams from '../../Interfaces/ITeams';
 
 export default {
   up(queryInterface: QueryInterface) {
@@ -20,4 +20,4 @@ export default {
   down(queryInterface: QueryInterface) {
     return queryInterface.dropTable('teams');
   },
-}
+};
