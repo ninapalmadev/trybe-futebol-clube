@@ -1,4 +1,4 @@
-import { IMatch } from '../Interfaces/IMatch';
+import { IMatch, IMatchModelCreate } from '../Interfaces/IMatch';
 import { IMatchModel } from '../Interfaces/IMatchModel';
 import SequelizeMatch from '../database/models/SequelizeMatch';
 import SequelizeTeam from '../database/models/SequelizeTeam';
@@ -44,7 +44,7 @@ export default class MatchesModel implements IMatchModel {
     return match;
   }
 
-  async createMatch(body: IMatch): Promise<IMatch | null> {
+  async createMatch(body: IMatchModelCreate): Promise<IMatch> {
     const match = await this.model.create({ ...body, inProgress: true });
     return match;
   }

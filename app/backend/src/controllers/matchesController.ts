@@ -44,7 +44,7 @@ export default class MatchesController {
     return res.status(mapStatusHTTP(status)).json(data);
   }
 
-  async createMatch(req: Request, res: Response): Promise<Response> {
+  async createMatch(req: Request, res: Response) {
     const { body } = req;
     const { status, data } = await this.matchesService.createMatch(body);
     return res.status(mapStatusHTTP(status)).json(data);
