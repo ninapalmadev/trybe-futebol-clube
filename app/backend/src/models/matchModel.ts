@@ -34,4 +34,13 @@ export default class MatchesModel implements IMatchModel {
     await match.save();
     return match;
   }
+
+  async updateMatches(id: IMatch['id'], homeTeamGoals: number, awayTeamGoals: number) {
+    const match = await this.model.findByPk(id);
+    if (!match) return null;
+    match.homeTeamGoals = homeTeamGoals;
+    match.awayTeamGoals = awayTeamGoals;
+    await match.save();
+    return match;
+  }
 }
