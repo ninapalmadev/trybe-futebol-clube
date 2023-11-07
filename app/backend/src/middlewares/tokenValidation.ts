@@ -8,9 +8,9 @@ export default class tokenValidation {
       return res.status(401).json({ message: 'Token not found' });
     }
     try {
-      const token = JWT.verify(authorization);
-      res.locals.user = token;
-    } catch (error) {
+      const validToken = JWT.verify(authorization);
+      res.locals.user = validToken;
+    } catch (err) {
       return res.status(401).json({ message: 'Token must be a valid token' });
     }
     next();

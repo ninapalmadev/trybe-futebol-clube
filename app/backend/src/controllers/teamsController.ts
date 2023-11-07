@@ -1,5 +1,5 @@
 import { Request, Response } from 'express';
-import TeamsService from '../services/teamsService';
+import TeamsService from '../services/teamServices';
 import mapStatusHTTP from '../utils/mapStatusHTTP';
 
 export default class TeamsController {
@@ -9,7 +9,7 @@ export default class TeamsController {
     this.teamsService = new TeamsService();
   }
 
-  async getAll(_request: Request, response: Response): Promise<Response> {
+  async getAll(request: Request, response: Response): Promise<Response> {
     const { status, data } = await this.teamsService.findAll();
     return response.status(mapStatusHTTP(status)).json(data);
   }

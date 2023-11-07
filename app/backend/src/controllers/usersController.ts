@@ -1,5 +1,5 @@
 import { Request, Response } from 'express';
-import UsersService from '../services/usersService';
+import UsersService from '../services/userService';
 import mapStatusHTTP from '../utils/mapStatusHTTP';
 
 export default class UsersController {
@@ -9,15 +9,15 @@ export default class UsersController {
     this.usersService = new UsersService();
   }
 
-  async login(req: Request, res: Response): Promise<Response> {
+  async login(req: Request, res: Response) {
     const { email, password } = req.body;
-    const response = await this.usersService.login(email, password);
-    return res.status(mapStatusHTTP(response.status)).json(response.data);
+    const { status, data } = await this.usersService.login(email, password);
+    return res.status(mapStatusHTTP(status)).json(data);
   }
 
   async user(_req: Request, res: Response): Promise<Response> {
     const { email } = res.locals.user;
-    const response = await this.usersService.user(email);
-    return res.status(mapStatusHTTP(response.status)).json(response.data);
+    const { status, data } = await this.usersService.user(email);
+    return res.status(mapStatusHTTP(status)).json(data);
   }
 }

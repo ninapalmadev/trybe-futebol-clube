@@ -1,15 +1,15 @@
 import {
+  CreationOptional,
   DataTypes,
-  Model,
   InferAttributes,
   InferCreationAttributes,
-  CreationOptional,
+  Model,
 } from 'sequelize';
 import db from '.';
 
-export default class SequelizeTeam extends Model
-  <InferAttributes<SequelizeTeam>,
-  InferCreationAttributes<SequelizeTeam>> {
+class SequelizeUser extends Model
+  <InferAttributes<SequelizeUser>,
+  InferCreationAttributes<SequelizeUser>> {
   declare id: CreationOptional<number>;
   declare username: string;
   declare role: string;
@@ -17,12 +17,12 @@ export default class SequelizeTeam extends Model
   declare password: string;
 }
 
-SequelizeTeam.init({
+SequelizeUser.init({
   id: {
     type: DataTypes.INTEGER,
     allowNull: false,
-    primaryKey: true,
     autoIncrement: true,
+    primaryKey: true,
   },
   username: {
     type: DataTypes.STRING,
@@ -42,7 +42,8 @@ SequelizeTeam.init({
   },
 }, {
   sequelize: db,
-  modelName: 'users',
+  tableName: 'users',
   timestamps: false,
-  underscored: true,
 });
+
+export default SequelizeUser;

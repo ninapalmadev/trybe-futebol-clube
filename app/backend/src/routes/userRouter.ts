@@ -1,4 +1,4 @@
-import { Router, Request, Response } from 'express';
+import { Request, Response, Router } from 'express';
 import UsersController from '../controllers/usersController';
 import loginValidation from '../middlewares/loginValidation';
 import tokenValidation from '../middlewares/tokenValidation';
@@ -11,7 +11,6 @@ router.post(
   loginValidation.validateLogin,
   (req: Request, res: Response) => usersController.login(req, res),
 );
-
 router.get(
   '/role',
   tokenValidation.validateToken,
