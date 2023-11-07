@@ -36,4 +36,12 @@ export default class MatchesService {
     await this.matchesModel.updateMatches(id, homeTeamGoals, awayTeamGoals);
     return { status: 'SUCCESSFUL', data: { message: 'Updated matches' } };
   }
+
+  async createMatch(body: IMatch): Promise<ServiceResponse<IMatch>> {
+    const match = await this.matchesModel.createMatch(body);
+    if (!match) {
+      return { status: 'INVALID_DATA', data: { message: 'Bad request' } };
+    }
+    return { status: 'CREATED', data: match };
+  }
 }

@@ -43,4 +43,9 @@ export default class MatchesModel implements IMatchModel {
     await match.save();
     return match;
   }
+
+  async createMatch(body: IMatch): Promise<IMatch | null> {
+    const match = await this.model.create({ ...body, inProgress: true });
+    return match;
+  }
 }
