@@ -25,4 +25,9 @@ export default class MatchesService {
     }
     return { status: 'SUCCESSFUL', data: matches };
   }
+
+  async finishedMatches(id: IMatch['id']): Promise<ServiceResponse<{ message: string }>> {
+    await this.matchesModel.finishedMatches(id);
+    return { status: 'SUCCESSFUL', data: { message: 'Finished' } };
+  }
 }

@@ -26,4 +26,10 @@ export default class MatchesController {
     const matches = await this.matchesService.findInProgress(boolean);
     return res.status(mapStatusHTTP(matches.status)).json(matches.data);
   }
+
+  async finishedMatches(req: Request, res: Response) {
+    const { id } = req.params;
+    const { status, data } = await this.matchesService.finishedMatches(Number(id));
+    return res.status(mapStatusHTTP(status)).json(data);
+  }
 }
